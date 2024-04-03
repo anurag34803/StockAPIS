@@ -16,9 +16,9 @@ import java.util.TreeMap;
 
 public class CallApi {
     public static String makeRequest(String method, String endpoint, HashMap<String, Object> payload, HashMap<String, String> params) throws Exception {
-        String secretKey = "fc2e57281210f06a8bbc40f09063b2ac354a8a2c643033e00ce297ea0918db17" ; // provided by coinswitch
+        String secretKey = "" ; // provided by coinswitch
 
-        String apiKey =  "3d75b6abb90dda737da9a779dcb8dae393b8dae7240bdc7933ecbd3ebf10ae6b";  // provided by coinswitch
+        String apiKey =  "";  // provided by coinswitch
 
         String decodedEndpoint = endpoint;
         if (method.equals("GET") && !params.isEmpty()) {
