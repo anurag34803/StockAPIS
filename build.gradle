@@ -28,5 +28,5 @@ test {
 
 task run(type : JavaExec) {
     main = 'org.example.Main'
-    classpath = sourceSet.Main.runtimeClassPath
+    classpath = sourceSets.main.runtimeClasspath
 }
