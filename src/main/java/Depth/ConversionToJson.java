@@ -28,17 +28,32 @@ public class ConversionToJson {
                 Depthdata.add(timeFormatter(jsonNode.get("timestamp").asText()));
 
                 StringBuilder bids = new StringBuilder();
-
-                for(int i=0;i<jsonNode.get("bids").size();i++)
+                double Totalbids = 0;
+                for(int i=0;i<jsonNode.get("bids").size();i++) {
+                    Totalbids += jsonNode.get("bids").get(i).get(0).asDouble();
                     bids.append(jsonNode.get("bids").get(i));
+                }
+
 
                 StringBuilder asks = new StringBuilder();
+                double Totalasks = 0;
 
-                for(int i=0;i<jsonNode.get("asks").size();i++)
+                for(int i=0;i<jsonNode.get("asks").size();i++) {
+                    Totalasks += jsonNode.get("asks").get(i).get(0).asDouble();
                     asks.append(jsonNode.get("asks").get(i));
+                }
+
 
                 Depthdata.add(bids.toString());
                 Depthdata.add(asks.toString());
+
+                double Total = Totalbids + Totalasks;
+
+                Totalbids = (Totalbids/Total) * 100;
+                Totalasks = (Totalasks/Total) * 100;
+
+                Depthdata.add(Double.toString(Totalbids));
+                Depthdata.add(Double.toString(Totalasks));
 
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
